@@ -1,0 +1,10 @@
+.small-icon {
+  width: 14px;
+  height: 14px;
+  position: absolute;
+  bottom: -14px;
+  margin-left: -5px;
+  background-image: url('/assets/wikipedia_logo.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}

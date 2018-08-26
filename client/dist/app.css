@@ -1,0 +1,183 @@
+.-main-main-container-3QtoGx- {
+  width: 800px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}.-audio-audio-container-2zsqsW- {
+  
+}:focus {
+  outline: none;
+}
+
+.-player-player-container-Pw09dI- {
+  display: flex;
+  flex-direction: row;
+  height: 60px;
+  width: 100%;
+  background-color: #fff;
+  
+  align-items: center;
+}
+
+.-player-play-button-1HKX2y- {
+  margin-left: 30px;
+}
+
+.-player-player-button-icon-2reIud- {
+
+}
+
+.-player-play-1dDM03-:before {
+  font-family: Ionicons;
+  content: "\F488";
+}
+
+.-player-pause-2PkVyQ-:before {
+  font-family: Ionicons;
+  content: "\F478";
+}
+
+.-player-player-time-Y-yjvA- {
+  margin: 0 30px;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+}
+
+.-player-player-time-separator-3RoUEK- {
+  margin: 0 10px;
+}.-bigIcon-big-icon-2qxScD- {
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  bottom: -16px;
+  margin-left: -7px;
+  background-image: url('/assets/wikipedia_logo.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index:10;
+}.-smallIcon-small-icon-17fR-u- {
+  width: 14px;
+  height: 14px;
+  position: absolute;
+  bottom: -14px;
+  margin-left: -5px;
+  background-image: url('/assets/wikipedia_logo.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}.-slider-slider-container-250lQT- {
+  margin-left: 30px;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  -webkit-box-align: center;
+  -webkit-box-flex: 1;
+  height: 100%;
+}
+
+.-slider-slider-VxDDon- {
+  width: 100%;
+  padding: 8px 0;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.-slider-slider-bar-1EL4TO- {
+  width: 100%;
+  height: 2px;
+  background-color: #ddd;
+  outline: 0;
+}
+
+.-slider-slider-bar-fill-20Vpvc- {
+  position: relative;
+  height: 100%;
+  background-color: #7ec57c;
+}
+
+.-slider-slider-handle-15RCFH- {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    width: 12px;
+    height: 12px;
+    background-color: #4674b9;
+    border-radius: 50%;
+    border: 1px solid #e3e3e3;
+    outline: 0;
+}.-shoutOut-shoutOut-container-8XQpJz- {
+  width: 100%;
+  margin: 0 auto;
+  height: 200px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 4px;
+  padding: 5px; 
+  box-sizing: border-box;
+  display: block;
+}
+
+.-shoutOut-shoutOut-container-8XQpJz- + .-shoutOut-shoutOut-container-8XQpJz- {
+  margin-top: 2px;
+}
+
+p {
+  margin: 0;
+}
+
+h1 {
+  margin: 10px 0;
+}
+
+.-shoutOut-img-container-WBufcF- {
+  float: left;
+}
+
+img {
+  margin-right: 10px;
+}
+
+a {
+  float: right;
+  background-color: #4674b9;
+  text-decoration: none;
+  padding: 2px 6px 2px 6px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
+  color: #fff; 
+  border-radius: 4px;
+}
+
+.-shoutOut-title-container-3tnjR4- {  
+  width: 100%;
+  border-bottom: 2px solid black; 
+  margin-left: 10px;
+}
+
+.-shoutOut-short-container-1Ph5ZO- {
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.-shoutOut-long-container-1ndxeJ- {
+ margin-top: 10px; 
+}.-list-list-container-3_GB-M- {
+  width: 100%;
+  height: 604px;
+  background-image: url('/assets/howibuiltthis-background.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 4px;
+  overflow: hidden;
+  padding: 2px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.-list-flex-container-1VCgup- {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
