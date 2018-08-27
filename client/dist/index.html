@@ -3,11 +3,28 @@
 <head>
   <title>Hack ReCaster</title>
   <link href="https://unpkg.com/ionicons@4.2.2/dist/css/ionicons.min.css" rel="stylesheet">
+  <link rel='stylesheet' href='page.css'>
   <link rel='stylesheet' href='app.css'>
 </head>
   <body>
+    <div id='nav'></div>
     <div id='main'></div>
     <script src="https://unpkg.com/ionicons@4.2.2/dist/ionicons.js"></script>
+    <script type="text/javascript" src="lib/react.js"></script>
+    <script type="text/javascript" src="lib/react-dom.js"></script>
     <script type="text/javascript" src="bundle.js"></script>
+    <script type="text/javascript">
+      var curId = Number(location.pathname.split('/')[1]);
+
+      ReactDOM.render(
+        React.createElement(Nav),
+        document.getElementById('nav')
+      );
+  
+      ReactDOM.render(
+        React.createElement(Main, {id: curId}),
+        document.getElementById('main')
+      );
+    </script>
   </body>
 </html>
