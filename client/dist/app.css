@@ -148,6 +148,7 @@ a {
   border-left: 1px solid #CCCCCC;
   color: #fff; 
   border-radius: 4px;
+  margin: 2px 5px 0 0;
 }
 
 .-shoutOut-title-container-3tnjR4- {  
@@ -170,7 +171,7 @@ a {
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 4px;
-  overflow: hidden;
+  overflow-y: auto;
   padding: 2px;
   display: flex;
   align-items: flex-end;
@@ -181,14 +182,9 @@ a {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-end;
-}p {
-  display: inline-block;
-  font-size: 20px;
-  line-height: 36px;
-  vertical-align: center;
-}
-
-.-nav-nav-bar-2RXPdT- {
+  overflow-y: scroll;
+  max-height: 604px;
+}.-nav-nav-bar-2RXPdT- {
   width: 100%;
   background-color: #4C85C5;
   margin-bottom: 10px;
@@ -201,6 +197,10 @@ a {
   font-weight: bold;
   margin-left: 20px;
   font-size: 22px;
+  display: inline-block;
+  font-size: 20px;
+  line-height: 36px;
+  vertical-align: center;
 }
 
 .-nav-recaster-unpFur- {
@@ -209,4 +209,8 @@ a {
   margin-left: 5px;
   color: pink;
   text-shadow: 2px 2px #ff0000;
+  display: inline-block;
+  font-size: 20px;
+  line-height: 36px;
+  vertical-align: center;
 }
