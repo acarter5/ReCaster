@@ -1,0 +1,29 @@
+p {
+  display: inline-block;
+  font-size: 20px;
+  line-height: 36px;
+  vertical-align: center;
+}
+
+.nav-bar {
+  width: 100%;
+  background-color: #4C85C5;
+  margin-bottom: 10px;
+  height: 36px;
+  vertical-align: center;
+}
+
+.hack {
+  font-family: Helvetica;
+  font-weight: bold;
+  margin-left: 20px;
+  font-size: 22px;
+}
+
+.recaster {
+  font-family: Lazer84;
+  font-weight: 200;
+  margin-left: 5px;
+  color: pink;
+  text-shadow: 2px 2px #ff0000;
+}

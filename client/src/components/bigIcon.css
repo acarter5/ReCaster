@@ -4,7 +4,7 @@
   position: absolute;
   bottom: -16px;
   margin-left: -7px;
-  background-image: url('/assets/wikipedia_logo.png');
+  background-image: url('https://s3.us-east-2.amazonaws.com/recaster/wikipedia_logo.png');
   background-repeat: no-repeat;
   background-size: cover;
   z-index:10;
