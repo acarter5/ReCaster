@@ -6,7 +6,7 @@ import styles from './list.css';
 const List = (props) => {
   return (
     <div styleName='list-container'>
-      <div styleName='flex-container'>
+      <div styleName='flex-container' ref={props.getRef}>
         {props.shoutOuts.map(
           (shoutout) => <ShoutOut data={shoutout}/>
         )}

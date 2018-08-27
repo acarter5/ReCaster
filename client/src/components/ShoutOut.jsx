@@ -17,8 +17,8 @@ const ShoutOut = (props) => {
       <div styleName='long-container'>
         <p>
         {props.data.long}
-          <a href={props.data.link} target="_blank">Read more</a>
         </p>       
+        <a href={props.data.link} target="_blank">Read more</a>
       </div>
     </div>
   )

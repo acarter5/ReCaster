@@ -24,11 +24,17 @@ class Main extends React.Component {
     this.togglePlay = this.togglePlay.bind(this);
     this.durationChange = this.durationChange.bind(this);
     this.getAudioRef = this.getAudioRef.bind(this);
+    this.getListReference = this.getListReference.bind(this);
     this.getData = this.getData.bind(this);
+    this.listElement = null;
   }
 
   componentDidMount() {
     this.getData();
+  }
+
+  getListReference(ref) {
+    this.listElement = ref;
   }
 
   getData() {
@@ -52,6 +58,8 @@ class Main extends React.Component {
         this.setState({currentShoutOut: shoutOut}, () => {
           this.setState((prevState) => {
             return {shoutOutsToRender: prevState.shoutOutsToRender.concat(this.state.currentShoutOut)};
+          }, () => {
+            this.listElement.scrollTop = this.listElement.scrollHeight;
           })
         });
       }
@@ -68,7 +76,6 @@ class Main extends React.Component {
       audioElement.pause();
     }
   }
-
   durationChange() {
     this.setState({duration: this.audioElement.duration});
   }
@@ -80,7 +87,7 @@ class Main extends React.Component {
   render() {
     return (
       <div styleName='main-container'>
-        <List shoutOuts={this.state.shoutOutsToRender} />
+        <List getRef={this.getListReference} shoutOuts={this.state.shoutOutsToRender} />
         <Audio getRef={this.getAudioRef} durationChange={this.durationChange} customOnTimeChange={this.customOnTimeChange} togglePlay={this.togglePlay} currentTime={this.state.currentTime} duration={this.state.duration} isPlaying={this.state.isPlaying} shoutOuts={this.state.shoutOuts} currentShoutOut={this.state.currentShoutOut}/>
       </div>
     )
