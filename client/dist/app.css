@@ -51,7 +51,7 @@
   position: absolute;
   bottom: -16px;
   margin-left: -7px;
-  background-image: url('/assets/wikipedia_logo.png');
+  background-image: url('https://s3.us-east-2.amazonaws.com/recaster/wikipedia_logo.png');
   background-repeat: no-repeat;
   background-size: cover;
   z-index:10;
@@ -61,9 +61,10 @@
   position: absolute;
   bottom: -14px;
   margin-left: -5px;
-  background-image: url('/assets/wikipedia_logo.png');
+  background-image: url('https://s3.us-east-2.amazonaws.com/recaster/wikipedia_logo.png');
   background-repeat: no-repeat;
   background-size: cover;
+  z-index: 2;
 }.-slider-slider-container-250lQT- {
   margin-left: 30px;
   display: flex;
@@ -165,7 +166,7 @@ a {
 }.-list-list-container-3_GB-M- {
   width: 100%;
   height: 604px;
-  background-image: url('/assets/howibuiltthis-background.jpg');
+  background-image: url('https://s3.us-east-2.amazonaws.com/recaster/howibuiltthis-background.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 4px;
@@ -180,4 +181,32 @@ a {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-end;
+}p {
+  display: inline-block;
+  font-size: 20px;
+  line-height: 36px;
+  vertical-align: center;
+}
+
+.-nav-nav-bar-2RXPdT- {
+  width: 100%;
+  background-color: #4C85C5;
+  margin-bottom: 10px;
+  height: 36px;
+  vertical-align: center;
+}
+
+.-nav-hack-14xP-3- {
+  font-family: Helvetica;
+  font-weight: bold;
+  margin-left: 20px;
+  font-size: 22px;
+}
+
+.-nav-recaster-unpFur- {
+  font-family: Lazer84;
+  font-weight: 200;
+  margin-left: 5px;
+  color: pink;
+  text-shadow: 2px 2px #ff0000;
 }
