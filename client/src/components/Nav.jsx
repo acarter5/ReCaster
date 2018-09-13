@@ -5,7 +5,6 @@ import styles from './nav.css';
 const Nav = (props) => {
   return (
     <div styleName='nav-bar'>
-      <p styleName='hack'>Hack </p>
       <p styleName='recaster'>recaster</p>
     </div>
   )
