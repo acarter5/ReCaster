@@ -5,12 +5,11 @@ import { formatSeconds } from '../utils/NumberUtils.js'
 import Slider from './Slider.jsx'
 
 const Player = (props) => {
-  const togglePlay = props.togglePlay;
   return (
     <div styleName='player-container'>
       <div
         styleName="play-button"
-        onClick={togglePlay}
+        onClick={() => props.handleTogglePlay(props.audioElement)}
         role="button"
         tabIndex="0"
       >
