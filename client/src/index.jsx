@@ -9,8 +9,11 @@ ReactDOM.render(
   <Provider store={store}>
     <Main id={location.pathname.split('/')[1]}/>
   </Provider>
-  , document.getElementById('main'));
-console.log(location.pathname.split('/')[1])
+  , document.getElementById('main')
+);
+
+ReactDOM.render(<Nav />, document.getElementById('nav'));
+
 
 window.Main = Main;
 window.Nav = Nav;

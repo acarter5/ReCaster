@@ -21,7 +21,10 @@ class Audio extends React.Component {
       <div styleName='audio-container'>
         <audio ref={this.getAudioRef} onDurationChange={() => this.props.durationChange(this.audioElement.duration)} 
          src={this.props.src} 
-         onTimeUpdate={() => this.props.handleTimeChange(this.audioElement.currentTime, this.props.shoutOuts, this.props.listRef)} />
+         onTimeUpdate={() =>{
+          console.log(this.audioElement.currentTime) 
+          this.props.handleTimeChange(this.audioElement.currentTime, this.props.shoutOuts, this.props.listRef, this.props.prevShoutOuts)
+         } } />
         <PlayerContainer audioElement={this.audioElement}/>
       </div>
     )
