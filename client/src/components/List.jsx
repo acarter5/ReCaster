@@ -8,7 +8,7 @@ const List = (props) => {
     <div styleName='list-container'>
       <div styleName='flex-container' ref={props.getListRef}>
         {props.shoutOuts.map(
-          (shoutout) => <ShoutOut data={shoutout}/>
+          (shoutout, index) => <ShoutOut data={shoutout} key={index}/>
         )}
       </div>
     </div>

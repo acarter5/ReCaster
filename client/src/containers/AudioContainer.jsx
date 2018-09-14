@@ -9,8 +9,8 @@ const mapDispatchToProps = (dispatch) => {
     durationChange: (duration) => {
       dispatch(durationChangeAction(duration));
     },
-    handleTimeChange: (time, totalShoutOuts, listRef) => {
-      dispatch(handleTimeChange(time, totalShoutOuts, listRef));
+    handleTimeChange: (time, totalShoutOuts, listRef, prevShoutOuts) => {
+      dispatch(handleTimeChange(time, totalShoutOuts, listRef, prevShoutOuts));
     }
   }
 }
@@ -19,7 +19,8 @@ const mapStateToProps = (state = {}) => {
   return {
     src: state.src, 
     shoutOuts: state.shoutOutsList,
-    listRef: state.listRef
+    listRef: state.listRef,
+    prevShoutOuts: state.shoutOutsToRender,
   };
 }
 
