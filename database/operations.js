@@ -6,4 +6,10 @@ const episodeById = (episode_id, whenData) => {
   db.query(qs, whenData);
 }
 
-module.exports = { episodeById };
+const addShoutOut = (episode_id, shoutOuts, whenUpdated) => {
+  const qs = `UPDATE episodes SET shoutouts = ` + `${JSON.stringify(shoutOuts)}` + ` WHERE id = ${episode_id};`;
+  console.log('qs', qs);
+  db.query(qs, whenUpdated);  
+}
+
+module.exports = { episodeById, addShoutOut };

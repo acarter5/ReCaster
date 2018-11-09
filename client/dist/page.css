@@ -34,3 +34,21 @@ table {
   font-family: Lazer84;
   src: url("lib/Lazer84.ttf") format("truetype");
 }
+
+.ReactFlipCard__Flipper {
+  width: 800px;
+  height: 604px;
+  border-radius: 4px;
+}
+
+.ReactFlipCard__Front {
+  width: 800px;
+  height: 604px;
+  border-radius: 4px;
+}
+
+.ReactFlipCard__Back {
+  width: 800px;
+  height: 604px;
+  border-radius: 4px;
+}

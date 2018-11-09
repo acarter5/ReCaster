@@ -8,30 +8,44 @@ class Player extends React.Component {
   constructor(props) {
     super(props)
 
-    this.changeCurrentTime = this.changeCurrentTime.bind(this);
-  }
-
-  changeCurrentTime(currentTime) {
-    this.props.audioElement.currentTime = currentTime
   }
 
   render() {
     return (
       <div styleName='player-container'>
-        <div
-          styleName="play-button"
-          onClick={() => this.props.handleTogglePlay(this.props.audioElement)}
+      <div
+          styleName="rewind-button"
+          onClick={() => this.props.handleRewind()}
           role="button"
           tabIndex="0"
         >
-          <p styleName={`player-button-icon ${this.props.isPlaying ? 'pause' : 'play'}`} />
+          <p styleName={`rewind`} />
         </div>
+
+        <div
+          styleName="play-button"
+          onClick={this.props.handleTogglePlay}
+          role="button"
+          tabIndex="0"
+        >
+          <p styleName={`${this.props.isPlaying ? 'pause' : 'play'}`} />
+        </div>
+
+        <div
+          styleName="fast-forward-button"
+          onClick={() => this.props.handleFastForward()}
+          role="button"
+          tabIndex="0"
+        >
+          <p styleName={`fast-forward`} />
+        </div>
+
         <Slider
           max={this.props.duration}
           value={this.props.currentTime}
           shoutOuts={this.props.shoutOuts}
           currentShoutOut={this.props.currentShoutOut}
-          onChange={this.changeCurrentTime}
+          onChange={this.props.changeCurrentTime}
         />
         <div styleName="player-time">
           {formatSeconds(Math.floor(this.props.currentTime))}
@@ -39,6 +53,13 @@ class Player extends React.Component {
             /
           </div>
           {formatSeconds(Math.floor(this.props.duration))}
+        </div>
+        <div styleName='shoutout-button'
+        onClick={this.props.handleFlip}
+        role='button'
+        tabIndex='0'
+        >
+          <img src="assets/shoutout_icon.png" alt="Make a shoutout!" height="30" width="30" />
         </div>
       </div>
     )
