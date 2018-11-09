@@ -3,6 +3,7 @@ import Audio from '../components/Audio.jsx';
 import { connect } from 'react-redux';
 import durationChangeAction from '../actions/durationChange.js';
 import handleTimeChange from '../actions/timeChange.js'
+import togglePlay from '../actions/togglePlay.js';
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -11,7 +12,8 @@ const mapDispatchToProps = (dispatch) => {
     },
     handleTimeChange: (time, totalShoutOuts, listRef, prevShoutOuts) => {
       dispatch(handleTimeChange(time, totalShoutOuts, listRef, prevShoutOuts));
-    }
+    },
+    handleTogglePlay: () => dispatch(togglePlay),
   }
 }
 

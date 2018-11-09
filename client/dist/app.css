@@ -2,6 +2,17 @@
   width: 800px;
   margin: 0 auto;
   box-sizing: border-box;
+}
+
+.-main-flipper-container-11WmmF- {
+  display: block;
+  height: 604px;
+}
+
+.-main-flipper-container-11WmmF-::after {
+    content: "";
+    clear: both;
+    display: table;
 }.-audio-audio-container-2zsqsW- {
   
 }:focus {
@@ -22,8 +33,16 @@
   margin-left: 30px;
 }
 
-.-player-player-button-icon-2reIud- {
+.-player-rewind-button-2Cu3JU- {
+  margin-left: 30px;
+}
 
+.-player-fast-forward-button-LzmWCX- {
+  margin-left: 30px;
+}
+
+.-player-shoutout-button-l0NHWf- {
+  
 }
 
 .-player-play-1dDM03-:before {
@@ -34,6 +53,16 @@
 .-player-pause-2PkVyQ-:before {
   font-family: Ionicons;
   content: "\F478";
+}
+
+.-player-rewind-3emR4Q-:before {
+  font-family: Ionicons;
+  content: "\F4A1";
+}
+
+.-player-fast-forward-2RRaL5-:before {
+  font-family: Ionicons;
+  content: "\F427";
 }
 
 .-player-player-time-Y-yjvA- {
@@ -166,7 +195,7 @@ a {
  margin-top: 10px; 
 }.-list-list-container-3_GB-M- {
   width: 100%;
-  height: 604px;
+  height: 608px;
   background-image: url('https://s3.us-east-2.amazonaws.com/recaster/howibuiltthis-background.jpg');
   background-repeat: no-repeat;
   background-size: cover;
@@ -174,6 +203,7 @@ a {
   overflow-y: auto;
   padding: 2px;
   display: flex;
+  box-sizing: border-box;
   align-items: flex-end;
 }
 
@@ -184,7 +214,110 @@ a {
   align-items: flex-end;
   overflow-y: scroll;
   max-height: 604px;
-}.-nav-nav-bar-2RXPdT- {
+}h2 {
+  font-family: Bookman Old Style;
+  font-size: 38px;
+}
+
+h3 {
+ font-family: Bookman Old Style;
+  font-size: 30px; 
+}
+
+.-form-back-card-1sv4RL- {
+  width: 100%;
+  height: 604px;
+  background-image: url('https://s3.us-east-2.amazonaws.com/recaster/howibuiltthis-background.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 4px;
+  overflow-y: auto;
+  padding: 2px;
+  display: flex;
+  box-sizing: border-box;
+  align-items: flex-end;
+}
+
+.-form-element-1b17mb- {
+
+}
+
+.-form-wikipedia-1npdYh- {
+
+}
+
+.-form-form-container-25Id2F- {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 4px;
+  padding: 5px; 
+  box-sizing: border-box;
+  display: block;
+  overflow-y: scroll;
+  padding: 10px;
+  position: relative;
+}
+
+.-form-title-screen-12SYNC- {
+  margin-bottom: 200px;
+}
+
+.-form-shoutout-submit-2KXAZZ- {
+  border-top: 5px solid black;
+  margin-top: 10px;
+  height: 580px;
+  box-sizing: border-box;
+}
+
+.-form-wikipedia-submit-17GyAo- {
+
+}
+
+.-form-wikipedia-submit-17GyAo- input[type=text] {
+  width: 80%;
+}
+
+.-form-wikipedia-submit-17GyAo- input[type=submit] {
+  display: block;
+}
+
+.-form-excited-girl-3lkQWa- {
+  width: 180px;
+  position: absolute;
+  right: 0;
+}
+
+.-form-platform-button-outer-container-238YXs- {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.-form-platform-button-inner-container-1q59Tk- {
+  width: 120px;
+}
+
+.-form-platform-button-inner-container-1q59Tk- + .-form-platform-button-inner-container-1q59Tk- {
+  margin-left: 40px;
+}
+
+.-form-platform-button-inner-container-1q59Tk- a {
+  background-color: transparent;
+  border: none;
+  color: blue;
+  text-align: center;
+  line-height: 28px;
+}
+
+.-form-platform-button-inner-container-1q59Tk- img {
+  width: 100%;
+  width: 120px;
+  height: 120px;
+}
+.-nav-nav-bar-2RXPdT- {
   width: 100%;
   background-color: #4C85C5;
   margin-bottom: 10px;
