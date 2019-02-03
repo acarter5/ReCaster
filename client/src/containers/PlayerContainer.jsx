@@ -7,7 +7,7 @@ import toggleFlipped from '../actions/toggleFlipped.js';
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleFlip: () => dispatch(toggleFlipped),
+    handleFlip: () => dispatch(toggleFlipped)
   }
 }
 
@@ -23,7 +23,8 @@ const mapStateToProps = (state, ownProps) => {
     handleRewind: ownProps.handleRewind,
     handleFastForward: ownProps.handleFastForward,
     changeCurrentTime: ownProps.changeCurrentTime,
-    handleTogglePlay: ownProps.handleTogglePlay
+    handleTogglePlay: ownProps.handleTogglePlay,
+    listRef: state.listRef
   };
 }
 

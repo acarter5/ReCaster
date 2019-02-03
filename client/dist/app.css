@@ -209,11 +209,14 @@ a {
 
 .-list-flex-container-1VCgup- {
   width: 100%;
-  display: flex;
   flex-wrap: wrap;
   align-items: flex-end;
   overflow-y: scroll;
   max-height: 604px;
+}
+
+.-list-hidden-1uysBd- {
+  visibility: hidden;
 }h2 {
   font-family: Bookman Old Style;
   font-size: 38px;

@@ -14,9 +14,12 @@
 
 .flex-container {
   width: 100%;
-  display: flex;
   flex-wrap: wrap;
   align-items: flex-end;
   overflow-y: scroll;
   max-height: 604px;
+}
+
+.hidden {
+  visibility: hidden;
 }

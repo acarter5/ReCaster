@@ -1,6 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Form from '../components/Form.jsx';
+import toggleFlipped from '../actions/toggleFlipped.js';
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    handleFlip: () => dispatch(toggleFlipped),
+  }
+}
 
 const mapStateToProps = (state) => {
   return {
@@ -8,7 +15,7 @@ const mapStateToProps = (state) => {
   };
 }
 
-var FormContainer = connect(mapStateToProps, null)(Form);
+var FormContainer = connect(mapStateToProps, mapDispatchToProps)(Form);
 
 
 export default FormContainer;
