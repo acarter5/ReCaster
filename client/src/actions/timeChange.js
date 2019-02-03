@@ -5,7 +5,7 @@ import changeCurrentTime from './currentTime.js';
 
 
 
-var handleTimeChange = (time, totalShoutOuts, listRef) => {
+var handleTimeChange = (time, totalShoutOuts, listRef, prevShoutOuts) => {
 
   const shoutOutsToRender = totalShoutOuts.filter(function(shoutOut) {
     return shoutOut.timespot <= time;
@@ -15,7 +15,11 @@ var handleTimeChange = (time, totalShoutOuts, listRef) => {
     dispatch(changeCurrentTime(time));
     dispatch(changeshoutOutsToRender(shoutOutsToRender));
     dispatch(changeCurrentShoutOut(shoutOutsToRender[shoutOutsToRender.length - 1]));
-    listRef.scrollTop = listRef.scrollHeight;
+      if (shoutOutsToRender.length > prevShoutOuts.length ) {
+        setTimeout(function() {
+          listRef.scrollTop = listRef.scrollHeight;
+        }, 100);
+      }
   }
 };
 

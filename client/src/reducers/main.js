@@ -7,8 +7,9 @@ import currentShoutOut from './currentShoutOut.js';
 import currentTime from './currentTime.js';
 import isPlaying from './togglePlay.js';
 import listRef from './listRef.js';
+import isFlipped from './toggleFlipped';
 
-var rootReducer = combineReducers( {shoutOutsList, shoutOutsToRender, currentShoutOut, src, duration, currentTime, isPlaying, listRef} );
+var rootReducer = combineReducers( {shoutOutsList, shoutOutsToRender, currentShoutOut, src, duration, currentTime, isPlaying, listRef, isFlipped} );
 
 //TODO: define the root reducer for this app
 

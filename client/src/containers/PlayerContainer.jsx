@@ -3,13 +3,14 @@ import Audio from '../components/Audio.jsx';
 import { connect } from 'react-redux';
 import Player from '../components/Player.jsx';
 import togglePlay from '../actions/togglePlay.js';
-import handleTogglePlay from '../actions/handleTogglePlay';
+import toggleFlipped from '../actions/toggleFlipped.js';
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleTogglePlay: (audioElement) => dispatch(handleTogglePlay(audioElement))
+    handleFlip: () => dispatch(toggleFlipped)
   }
 }
+
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -18,7 +19,12 @@ const mapStateToProps = (state, ownProps) => {
     isPlaying: state.isPlaying,
     shoutOuts: state.shoutOutsList,
     currentShoutOut: state.currentShoutOut,
-    audioElement: ownProps.audioElement
+    audioElement: ownProps.audioElement,
+    handleRewind: ownProps.handleRewind,
+    handleFastForward: ownProps.handleFastForward,
+    changeCurrentTime: ownProps.changeCurrentTime,
+    handleTogglePlay: ownProps.handleTogglePlay,
+    listRef: state.listRef
   };
 }
 

@@ -16,8 +16,16 @@
   margin-left: 30px;
 }
 
-.player-button-icon {
+.rewind-button {
+  margin-left: 30px;
+}
 
+.fast-forward-button {
+  margin-left: 30px;
+}
+
+.shoutout-button {
+  
 }
 
 .play:before {
@@ -28,6 +36,16 @@
 .pause:before {
   font-family: Ionicons;
   content: "\F478";
+}
+
+.rewind:before {
+  font-family: Ionicons;
+  content: "\f4a1";
+}
+
+.fast-forward:before {
+  font-family: Ionicons;
+  content: "\f427";
 }
 
 .player-time {
