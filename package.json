@@ -18,7 +18,11 @@
     "nodemon": "^1.18.3",
     "path": "^0.12.7",
     "react": "^16.4.2",
-    "react-dom": "^16.4.2"
+    "react-card-flip": "^0.3.0",
+    "react-dom": "^16.4.2",
+    "react-scroll": "^1.7.10",
+    "react-scrollable-anchor": "^0.6.1",
+    "save": "^2.3.3"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",

@@ -1,16 +1,25 @@
-var getData = (id, callback) => {
-  axios.get(`http://localhost:3000/episodes/${id}`)
+import store from '../store/store.js';
+import axios from 'axios';
+import shoutOutsList from '../actions/shoutOutsList.js';
+import source from '../actions/source.js';
+
+const getData = function(id) {
+  return new Promise((resolve, reject)  => {
+    axios.get(`http://localhost:3000/episodes/${id}`)
     .then((res) => {
       const data = res.data.pop();
+      const shoutOuts = data.shoutouts ? JSON.parse(data.shoutouts) : [];
+      console.log(shoutOuts);
+      const src = data.src;
 
-      callback(data);
-      // self.setState({src: data.src});
-      // self.setState({shoutOuts: JSON.parse(data.shoutouts)});
+      store.dispatch(shoutOutsList(shoutOuts));
+      store.dispatch(source(src));
     })
+    .then(resolve)
     .catch((err) => {
-      console.log(err);
       throw(err);
-    })
+    });
+  })
 }
 
 export default getData;

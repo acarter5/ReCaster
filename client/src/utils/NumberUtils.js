@@ -19,3 +19,11 @@ export const formatSeconds = (num) => {
   const seconds = padZero(num % 60, 2);
   return `${minutes}:${seconds}`;
 };
+
+export const unformatSeconds = (string) => {
+  const fullTime = string.split(':')
+  const minutes = Number(fullTime[0]);
+  const seconds = Number(fullTime[1]);
+
+  return (minutes * 60) + seconds;
+}

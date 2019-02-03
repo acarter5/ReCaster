@@ -3,3 +3,14 @@
   margin: 0 auto;
   box-sizing: border-box;
 }
+
+.flipper-container {
+  display: block;
+  height: 604px;
+}
+
+.flipper-container::after {
+    content: "";
+    clear: both;
+    display: table;
+}
