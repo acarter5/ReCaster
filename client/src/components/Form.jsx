@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import CSSModules from 'react-css-modules';
 import styles from './form.css';
 import { formatSeconds, unformatSeconds } from '../utils/NumberUtils.js';
@@ -47,7 +48,9 @@ class Form extends React.Component {
     var srcArr = this.state.wikipediaSRC.split('/');
     var title = srcArr[srcArr.length - 1];
 
-    createShoutOutWikipedia({shoutoutTime, title, src});
+    this.setState({wikipediaSRC: ''});
+    createShoutOutWikipedia({shoutoutTime, title, src})
+    .then(this.props.handleFlip);
   }
 
   render() {
@@ -91,7 +94,7 @@ class Form extends React.Component {
               <h2>Wikipedia:</h2>
               <form>
                 <h3>Just give us the link to the Wikipedia article</h3>
-                <input type='text' value = {this.state.wikipediaSRC} onChange={this.handleWikipediaInput}/>
+                <input type='text' value={this.state.wikipediaSRC} onChange={this.handleWikipediaInput}/>
                 <h3>And the time that the Wikipedia article or subject is mentioned in the podcast</h3>
                 <input type='text' value={this.state.shoutoutTime} onChange={this.handleTimeInput}/>
                 <input type='submit' onClick={this.makeShoutOutWikipedia}/> 
@@ -105,58 +108,6 @@ class Form extends React.Component {
     )
   }
 }
-
-// const Form = (props) => {
-//   return (
-//     <div styleName='back-card'>
-//       <div styleName='form-container'>
-//         <div styleName='title-screen'>
-//           <img styleName='excited-girl' src='./assets/excited_girl.gif'/>
-//           <h2>Hear something that deserves <br /> a shoutout?</h2>
-//           <h3>what type of shoutout do you <br /> want to make:</h3>
-//           <div styleName='platform-button-outer-container'>
-
-//             <div styleName='platform-button-inner-container'>
-//               <Link to='wikipedia' smooth={true}>
-//                 <img src='./assets/wikipedia_icon.png'/>
-//                 Wikipedia Article
-//               </Link>
-
-//             </div>
-
-//             <div styleName='platform-button-inner-container'>
-//               <a href='#'>
-//                 <img src='./assets/facebook_icon.png' />
-//                 Facebook Post
-//               </a>
-//             </div>
-
-//             <div styleName='platform-button-inner-container'>
-//               <a href='#'>
-//                 <img src='./assets/twitter_icon.jpeg'/>
-//                 Tweet
-//               </a>
-//             </div>
-
-//           </div>
-//         </div>
-
-//         <Element name='wikipedia' className='element' styleName='element'>
-//           <div styleName='shoutout-submit wikipedia-submit'>
-//             <h2>Wikipedia:</h2>
-//             <h3>Just give us the link to the appropriate article</h3>
-//             <form>
-//               <input type='text'/>
-//               <input type='submit' /> 
-//             </form>
-//           </div>
-//         </Element>
-
-//       </div>
-
-//     </div>
-//   )
-// }
 
 export default CSSModules(Form, styles, {allowMultiple: true});
 

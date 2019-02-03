@@ -38,6 +38,8 @@ app.put('/shoutouts/wikipedia/:id', (req, mainres) => {
   var imgSRC;
   var newShoutOut;
   var newShoutOuts;
+  var imgArr;
+  var imgTitle;
 
   db.episodeById(id, (err, results) => {
     shoutOuts = JSON.parse(results[0].shoutouts);
@@ -85,7 +87,51 @@ app.put('/shoutouts/wikipedia/:id', (req, mainres) => {
             }
           });
         })
-        .catch((err) => mainres.status(404).send('err retriving pic from wikipedia api', err));
+        .catch((err) =>  {
+          console.log('err retriving pic from wikipedia api', err);
+
+          axios.get('https://en.wikipedia.org/w/api.php', {
+            params: {
+              format: 'json',
+              action: 'query',
+              formatversion: 2,
+              prop: 'images',
+              titles: title,
+            }
+          })
+          .then((res) => {
+            imgArr = res.data.query.pages[0].images;
+            imgTitle = imgArr[imgArr.length - 1].title.replace('File:', '');
+            
+            axios.get('https://en.wikipedia.org/w/api.php', {
+              params: {
+                format: 'json',
+                action: 'query',
+                formatversion: 2,
+                prop: 'imageinfo',
+                iiprop: 'url',
+                titles: `Image:${imgTitle}`
+              }
+            })
+            .then((res) => {
+              imgSRC = res.data.query.pages[0].imageinfo[0].url;
+              newShoutOut = [{"timespot": time, "img": imgSRC, "link": url, "short": text, "title": displayTitle}];
+              newShoutOuts = shoutOuts.slice(0, newIdx).concat(newShoutOut).concat(shoutOuts.slice(newIdx));
+
+              db.addShoutOut(id, JSON.stringify(newShoutOuts), (err, results) => {
+                try {
+                  mainres.status(200).send('shoutout posted', results, err);
+                } catch (err) {
+                  console.log('in err', err, results);
+                  mainres.status(404).send(err);
+                }
+              });
+            })
+            .catch((err) => console.log('err in 3rd pic retrieval', err));
+          })
+          .catch((err) => console.log('error in 2nd pic retrieval', err));
+
+        });
       })
       .catch((err) => mainres.status(404).send('err retriving text from wikipedia api', err));
     }

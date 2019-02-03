@@ -1,15 +1,13 @@
 import React from 'react';
 import CSSModules from 'react-css-modules';
-import axios from 'axios';
 import styles from './main.css';
 import AudioContainer from '../containers/AudioContainer.jsx';
 import List from './List.jsx';
 import FormContainer from '../containers/FormContainer.jsx';
 import store from '../store/store.js';
-import shoutOutsList from '../actions/shoutOutsList.js';
-import source from '../actions/source.js';
 import ListContainer from '../containers/ListContainer.jsx';
-import ReactCardFlip from 'react-card-flip';;
+import ReactCardFlip from 'react-card-flip';
+import getData from '../lib/getShoutOuts.js';
 
 
 
@@ -21,7 +19,7 @@ class Main extends React.Component {
       isFlipped: store.getState().isFlipped
     }
 
-    this.getData = this.getData.bind(this);
+    // this.getData = this.getData.bind(this);
     this.listElement = null;
     this.handleChange = this.handleChange.bind(this);
     this.handleOnFlip = this.handleOnFlip.bind(this);
@@ -30,7 +28,7 @@ class Main extends React.Component {
   }
 
   componentWillMount() {
-    this.getData();
+    getData(this.props.id);
   }
 
   componentDidMount() {
@@ -65,29 +63,15 @@ class Main extends React.Component {
     });
   }
 
-  getData() {
-    axios.get(`http://localhost:3000/episodes/${this.props.id}`)
-      .then((res) => {
-        const data = res.data.pop();
-        const shoutOuts = JSON.parse(data.shoutouts);
-        const src = data.src;
-
-        store.dispatch(shoutOutsList(shoutOuts));
-        store.dispatch(source(src));
-      })
-      .catch((err) => {
-        throw(err);
-      })
-  }
-
   render() {
     return (
       <div styleName='main-container'>
         <div styleName='flipper-container'>
         <ReactCardFlip
           isFlipped={this.state.isFlipped}
+          infinite={true}
         >
-          <ListContainer key="front"/>
+          <ListContainer key="front" isFlipped={this.state.isFlipped}/>
           <FormContainer key="back"/>
         </ReactCardFlip>
         </div>
@@ -95,10 +79,6 @@ class Main extends React.Component {
       </div>
     )
   }
-}
-
-const handleChange = () => {
-
 }
 
 export default CSSModules(Main, styles);

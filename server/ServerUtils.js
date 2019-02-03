@@ -26,7 +26,7 @@ const formatText = function(text) {
   var newLine = false;
   var lastSnippet;
 
-  while (lines < maxLines) {
+  while (lines < maxLines && textArr.length) {
     curWord = textArr.shift();
 
     if (curWord.search(/\n/) !== -1) {

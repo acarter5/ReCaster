@@ -10,9 +10,10 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   return {
     shoutOuts: state.shoutOutsToRender,
+    isFlipped: ownProps.isFlipped
   };
 }
 
