@@ -10,8 +10,7 @@ export const createShoutOutWikipedia = function(params) {
     .then((res) => {
       console.log(res);
       if (res.status === 200) {
-        getData(id)
-        .then(resolve);
+        resolve(id);
       }
     })
     .catch((err) => {

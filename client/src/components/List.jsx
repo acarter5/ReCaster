@@ -6,7 +6,7 @@ import styles from './list.css';
 const List = (props) => {
   return (
     <div styleName='list-container'> 
-      <div styleName={props.isFlipped ? 'hidden' : null}>
+      <div >
         <div styleName='flex-container' ref={props.getListRef}>
           {props.shoutOuts.map(
             (shoutout, index) => <ShoutOut data={shoutout} key={index}/>

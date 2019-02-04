@@ -8,6 +8,20 @@ class Player extends React.Component {
   constructor(props) {
     super(props)
 
+    this.handleFlip = this.handleFlip.bind(this);
+  }
+
+  handleFlip() {
+    var time;
+    var displayVal
+    this.props.handleFlip()
+      .then(() => {
+        time = this.props.isFlipped ? 0 : 200;
+        displayVal = this.props.isFlipped ? 'hidden' : 'visible';
+        setTimeout(() => {
+          this.props.listRef.style.visibility = displayVal;
+        }, time);
+      })
   }
 
   render() {
@@ -55,7 +69,7 @@ class Player extends React.Component {
           {formatSeconds(Math.floor(this.props.duration))}
         </div>
         <div styleName='shoutout-button'
-        onClick={this.props.handleFlip}
+        onClick={this.handleFlip}
         role='button'
         tabIndex='0'
         >
