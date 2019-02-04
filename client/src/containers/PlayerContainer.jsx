@@ -7,7 +7,10 @@ import toggleFlipped from '../actions/toggleFlipped.js';
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleFlip: () => dispatch(toggleFlipped)
+    handleFlip: () => new Promise((resolve, reject) => {
+      dispatch(toggleFlipped);
+      resolve();
+    })
   }
 }
 
@@ -17,6 +20,7 @@ const mapStateToProps = (state, ownProps) => {
     currentTime: state.currentTime, 
     duration: state.duration,
     isPlaying: state.isPlaying,
+    isFlipped: state.isFlipped,
     shoutOuts: state.shoutOutsList,
     currentShoutOut: state.currentShoutOut,
     audioElement: ownProps.audioElement,
