@@ -16,6 +16,7 @@ class Form extends React.Component {
     this.handleTimeInput = this.handleTimeInput.bind(this);
     this.handleWikipediaInput = this.handleWikipediaInput.bind(this);
     this.makeShoutOutWikipedia = this.makeShoutOutWikipedia.bind(this);
+    this.handleFlip = this.handleFlip.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -39,6 +40,19 @@ class Form extends React.Component {
     this.setState({wikipediaSRC: event.target.value})
   }
 
+  handleFlip() {
+    var time;
+    var displayVal
+    this.props.handleFlip()
+      .then(() => {
+        time = this.props.isFlipped ? 0 : 200;
+        displayVal = this.props.isFlipped ? 'hidden' : 'visible';
+        setTimeout(() => {
+          this.props.listRef.style.visibility = displayVal;
+        }, time);
+      })
+  }
+
   makeShoutOutWikipedia(event) {
     event.preventDefault();
     event.stopPropagation();
@@ -50,7 +64,8 @@ class Form extends React.Component {
 
     this.setState({wikipediaSRC: ''});
     createShoutOutWikipedia({shoutoutTime, title, src})
-    .then(this.props.handleFlip);
+      .then(() => this.props.getShoutOuts())
+      .then(this.handleFlip);
   }
 
   render() {
