@@ -1,29 +1,24 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import Form from '../components/Form.jsx';
-import toggleFlipped from '../actions/toggleFlipped.js';
-import getData from '../asyncActions/getShoutOuts.js';
+import { connect } from 'react-redux'
+import Form from '../components/Form.jsx'
+import { makeHandleFlip } from './lib/index.js'
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    handleFlip: () => new Promise((resolve, reject) => {
-      dispatch(toggleFlipped);
-      resolve()
-    }),
-    getShoutOuts: () => dispatch(getData()),
-  }
+const mapDispatchToProps = dispatch => {
+    return {
+        handleFlip: makeHandleFlip(dispatch)
+    }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    currentTime: state.currentTime,
-    isFlipped: state.isFlipped,
-    listRef: state.listRef,
-  };
+const mapStateToProps = state => {
+    return {
+        currentTime: state.currentTime,
+        isFlipped: state.isFlipped,
+        listRef: state.listRef
+    }
 }
 
-var FormContainer = connect(mapStateToProps, mapDispatchToProps)(Form);
+var FormContainer = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Form)
 
-
-export default FormContainer;
-
+export default FormContainer

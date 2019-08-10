@@ -1,12 +1,12 @@
-import Redux from 'redux';
+import Redux from "redux";
 
-var currentShoutOut = (state = false, action) => {
+var togglePlay = (state = false, action) => {
   switch (action.type) {
-    case 'TOGGLE_PLAY':
+    case "TOGGLE_PLAY":
       return !state;
     default:
       return state;
   }
 };
 
-export default currentShoutOut;
+export default togglePlay;

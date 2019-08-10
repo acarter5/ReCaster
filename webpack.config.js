@@ -1,49 +1,91 @@
-var path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-var SRC_DIR = path.join(__dirname, '/client/src');
-var DIST_DIR = path.join(__dirname, '/client/dist');
+var path = require('path')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const WebpackMd5Hash = require('webpack-md5-hash')
+var SRC_DIR = path.join(__dirname, '/client/src')
+var DIST_DIR = path.join(__dirname, '/client/dist')
 
 module.exports = {
-  entry: `${SRC_DIR}/index.jsx`,
-  module: {
-    rules: [
-      {
-        test: /\.jsx$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
+    // target: 'web',
+    entry: `${SRC_DIR}/index.jsx`,
+    module: {
+        rules: [
+            {
+                test: /\.js?x$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader'
+                }
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            hmr: process.env.NODE_ENV === 'developement',
+                            reloadAll: true
+                        }
+                    },
+                    'css-loader?modules,localIdentName="[name]-[local]-[hash:base64:6]"'
+                ]
+            },
+            {
+                test: /\.(png|jpg|gif)$/,
+                use: {
+                    loader: 'url-loader',
+                    options: {
+                        limit: 8192
+                    }
+                }
+            }
+        ]
+    },
+    devServer: {
+        contentBase: DIST_DIR,
+        hot: true,
+        publicPath: '/',
+        watchContentBase: true,
+        historyApiFallback: true,
+        proxy: {
+            '/episodes': {
+                target: 'http://localhost:3000',
+                secure: false
+            },
+            '/shoutouts': {
+                target: 'http://localhost:3000',
+                secure: false
+            },
+            '/**/assets/**': {
+                target: 'http://localhost:3000',
+                secure: false
+            }
         },
-      },
-      {
-        test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: 'css-loader?modules,localIdentName="[name]-[local]-[hash:base64:6]"',
+        overlay: {
+            // Shows a full-screen overlay in the browser when there are compiler errors or warnings
+            warnings: false, // defaults to false
+            errors: false // defaults to false
+        }
+        // historyApiFallback: true
+    },
+    output: {
+        path: DIST_DIR,
+        filename: '[name].[hash].js',
+        publicPath: '/'
+    },
+    plugins: [
+        new MiniCssExtractPlugin({
+            filename: 'style.[contenthash].css'
         }),
-      },
-      {
-        test: /\.(png|jpg|gif)$/,
-        use: {
-          loader: 'url-loader',
-          options: {
-            limit: 8192,
-          },
-        },
-      },
-    ],    
-  },
-  output: {
-    path: DIST_DIR,
-    filename: 'bundle.js'
-  },
-  plugins: [
-    new ExtractTextPlugin({
-      filename: 'app.css',
-      allChunks: true,
-    }),
-  ],
-};
-
+        new HtmlWebpackPlugin({
+            inject: false,
+            hash: true,
+            template: `${SRC_DIR}/index.html`,
+            filename: 'index.html'
+        }),
+        new WebpackMd5Hash()
+    ]
+}
 
 // loaders: [
 //   {

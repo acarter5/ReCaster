@@ -1,3 +1,41 @@
 {
-  "presets": ["env", "react"]
+    "env": {
+        "test": {
+            "presets": [
+                [
+                    "@babel/preset-env",
+                    {
+                        "modules": false,
+                        "targets": {
+                            "node": "current"
+                        }
+                    }
+                ],
+                "@babel/preset-react"
+            ]
+        },
+        "development": {
+            "presets": [
+                [
+                    "@babel/preset-env",
+                    {
+                        "modules": false
+                    }
+                ],
+                "@babel/preset-react"
+            ]
+        }
+    }
+    // "presets": [
+    //     [
+    //         "@babel/preset-env",
+    //         {
+    //             "modules": false
+    //             // "targets": {
+    //             //     "node": "current"
+    //             // }
+    //         }
+    //     ],
+    //     "@babel/preset-react"
+    // ]
 }
