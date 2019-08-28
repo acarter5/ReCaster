@@ -25,9 +25,10 @@ class Player extends React.Component {
 
     render() {
         return (
-            <div styleName="player-container">
+            <div styleName="player-container" data-testid="player-component">
                 <div
                     styleName="rewind-button"
+                    data-testid="rewind-button"
                     onClick={() => this.props.handleRewind()}
                     role="button"
                     tabIndex="0"
@@ -37,6 +38,7 @@ class Player extends React.Component {
 
                 <div
                     styleName="play-button"
+                    data-testid="play-pause-button"
                     onClick={this.props.handleTogglePlay}
                     role="button"
                     tabIndex="0"
@@ -48,6 +50,7 @@ class Player extends React.Component {
 
                 <div
                     styleName="fast-forward-button"
+                    data-testid="fast-forward-button"
                     onClick={() => this.props.handleFastForward()}
                     role="button"
                     tabIndex="0"
@@ -68,6 +71,7 @@ class Player extends React.Component {
                     {formatSeconds(Math.floor(this.props.duration))}
                 </div>
                 <div
+                    data-testId="flipper"
                     styleName="shoutout-button"
                     onClick={this.handleFlip}
                     role="button"

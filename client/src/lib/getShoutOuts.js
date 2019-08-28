@@ -3,28 +3,20 @@ import axios from 'axios'
 import shoutOutsList from '../actions/shoutOutsList.js'
 import source from '../actions/source.js'
 
-const getData = function() {
+export const getData = function() {
     const id = window.location.pathname.replace(/\//g, '')
 
-    return new Promise((resolve, reject) => {
-        axios
-            .get(`http://localhost:3000/episodes/${id}`)
-            .then(res => {
-                const data = res.data.pop()
-                const shoutOuts = data.shoutouts
-                    ? JSON.parse(data.shoutouts)
-                    : []
-                console.log(shoutOuts)
-                const src = data.src
-
-                store.dispatch(shoutOutsList(shoutOuts))
-                store.dispatch(source(src))
-            })
-            .then(resolve)
-            .catch(err => {
-                throw err
-            })
+    return axios.get(`http://localhost:3000/api/episodes/${id}`).catch(err => {
+        throw err
     })
 }
 
-export default getData
+export const dispatchData = async () => {
+    const { data } = await getData()
+
+    let { shoutouts, src } = data[0]
+    shoutouts = JSON.parse(shoutouts)
+
+    await store.dispatch(shoutOutsList(shoutouts))
+    await store.dispatch(source(src))
+}

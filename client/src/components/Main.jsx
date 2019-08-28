@@ -5,7 +5,7 @@ import AudioContainer from '../containers/AudioContainer.jsx'
 import FormContainer from '../containers/FormContainer.jsx'
 import ListContainer from '../containers/ListContainer.jsx'
 import ReactCardFlip from 'react-card-flip'
-import getData from '../lib/getShoutOuts.js'
+import { dispatchData } from '../lib/getShoutOuts'
 
 class Main extends React.Component {
     constructor(props) {
@@ -13,12 +13,12 @@ class Main extends React.Component {
     }
 
     componentDidMount() {
-        getData()
+        dispatchData()
     }
 
     render() {
         return (
-            <div styleName="main-container">
+            <div styleName="main-container" data-testid="main-component">
                 <div styleName="flipper-container">
                     <ReactCardFlip
                         isFlipped={this.props.isFlipped}

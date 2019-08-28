@@ -30,6 +30,7 @@ class Slider extends React.Component {
         const percent =
             (e.clientX - offsetLeft(e.currentTarget)) /
             e.currentTarget.offsetWidth
+
         this.props.onChange(percent * max)
     }
 
@@ -43,7 +44,9 @@ class Slider extends React.Component {
         const { max, onChange } = props
 
         const diff = e.clientX - offsetLeft(domNode)
+
         const percent = Math.min(Math.max(diff / domNode.offsetWidth, 0), 1)
+
         onChange(percent * max)
     }
 
@@ -57,10 +60,11 @@ class Slider extends React.Component {
         const width = `${(value / max) * 100}%`
 
         return (
-            <div styleName="slider-container">
+            <div styleName="slider-container" data-testid="slider-component">
                 <div styleName="slider" onClick={this.onClick}>
                     <div
                         styleName="slider-bar"
+                        data-testid="slider-bar"
                         ref={node => {
                             this.domNode = node
                         }}
@@ -69,6 +73,7 @@ class Slider extends React.Component {
                             <div styleName="slider-bar-fill" style={{ width }}>
                                 <div
                                     styleName="slider-handle"
+                                    data-testid="slider-handle"
                                     onClick={prevent}
                                     onMouseDown={this.onMouseDown}
                                 />

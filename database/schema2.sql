@@ -16,6 +16,19 @@ CREATE TABLE episodes
   (id)
 );
 
+  ALTER DATABASE recaster CHARACTER
+  SET = utf8mb4
+  COLLATE = utf8mb4_unicode_ci;
+
+  ALTER TABLE episodes CONVERT TO CHARACTER
+  SET utf8mb4
+  COLLATE utf8mb4_unicode_ci;
+
+  ALTER TABLE episodes CHANGE shoutouts shoutouts TEXT CHARACTER
+  SET utf8mb4
+  COLLATE utf8mb4_unicode_ci;
+
+
 
   INSERT INTO episodes
     ( title, series_id, src, shoutouts)

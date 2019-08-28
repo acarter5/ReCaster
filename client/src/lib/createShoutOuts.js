@@ -4,9 +4,8 @@ const createShoutOutWikipedia = function(params) {
     return new Promise((resolve, reject) => {
         const id = window.location.pathname.replace(/\//g, '')
         axios
-            .put(`/shoutouts/wikipedia/${id}`, params)
+            .put(`/api/shoutouts/wikipedia/${id}`, params)
             .then(res => {
-                console.log(res)
                 if (res.status === 200) {
                     resolve(id)
                 }

@@ -42,13 +42,14 @@ class Audio extends React.Component {
 
     render() {
         return (
-            <div styleName="audio-container">
+            <div styleName="audio-container" data-testid="audio-component">
                 <audio
+                    data-testid="audio-element"
                     preload="auto"
                     ref={this.getAudioRef}
-                    onDurationChange={() =>
+                    onDurationChange={e => {
                         this.props.durationChange(this.audioElement.duration)
-                    }
+                    }}
                     src={this.props.src}
                     onTimeUpdate={() => {
                         this.props.handleTimeChange(
@@ -58,7 +59,9 @@ class Audio extends React.Component {
                             this.props.prevShoutOuts
                         )
                     }}
-                />
+                >
+                    <source src={this.props.src} type="audio/mpeg" />
+                </audio>
                 <PlayerContainer
                     handleTogglePlay={this.handleTogglePlay}
                     changeCurrentTime={this.changeCurrentTime}
