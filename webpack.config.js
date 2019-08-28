@@ -42,17 +42,17 @@ module.exports = {
         ]
     },
     devServer: {
-        contentBase: DIST_DIR,
+        // contentBase: `${DIST_DIR}/assets`,
         hot: true,
         publicPath: '/',
-        watchContentBase: true,
+        // watchContentBase: true,
         historyApiFallback: true,
         proxy: {
-            '/episodes': {
+            '/api/episodes': {
                 target: 'http://localhost:3000',
                 secure: false
             },
-            '/shoutouts': {
+            '/api/shoutouts': {
                 target: 'http://localhost:3000',
                 secure: false
             },

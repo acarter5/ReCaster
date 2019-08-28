@@ -4,7 +4,7 @@ import CSSModules from 'react-css-modules'
 import styles from './form.css'
 import { formatSeconds, unformatSeconds } from '../utils/NumberUtils.js'
 import createShoutOutWikipedia from '../lib/createShoutOuts.js'
-import getShoutOuts from '../lib/getShoutOuts'
+import { dispatchData } from '../lib/getShoutOuts'
 
 class Form extends React.Component {
     constructor(props) {
@@ -58,21 +58,27 @@ class Form extends React.Component {
         event.preventDefault()
         event.stopPropagation()
 
-        var shoutoutTime = unformatSeconds(this.state.shoutoutTime)
-        var src = this.state.wikipediaSRC
-        var srcArr = this.state.wikipediaSRC.split('/')
-        var title = srcArr[srcArr.length - 1]
+        const shoutoutTime = unformatSeconds(this.state.shoutoutTime)
+        const src = this.state.wikipediaSRC
+        const srcArr = this.state.wikipediaSRC.split('/')
+        const title = srcArr[srcArr.length - 1]
+
+        const params = {
+            shoutoutTime,
+            title,
+            src
+        }
 
         this.setState({ wikipediaSRC: '' })
-        createShoutOutWikipedia({ shoutoutTime, title, src })
-            .then(() => getShoutOuts())
+        createShoutOutWikipedia(params)
+            .then(dispatchData)
             .then(this.handleFlip)
     }
 
     render() {
         return (
             <div styleName="back-card">
-                <div styleName="form-container">
+                <div data-testid="form-component" styleName="form-container">
                     <div styleName="title-screen">
                         <img
                             styleName="excited-girl"
@@ -125,6 +131,7 @@ class Form extends React.Component {
                                 Just give us the link to the Wikipedia article
                             </h3>
                             <input
+                                data-testid="wikipedia-input"
                                 type="text"
                                 value={this.state.wikipediaSRC}
                                 onChange={this.handleWikipediaInput}
@@ -139,6 +146,7 @@ class Form extends React.Component {
                                 onChange={this.handleTimeInput}
                             />
                             <input
+                                data-testid="wikipedia-submit"
                                 type="submit"
                                 onClick={this.makeShoutOutWikipedia}
                             />

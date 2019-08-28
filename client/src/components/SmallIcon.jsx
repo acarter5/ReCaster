@@ -7,6 +7,7 @@ const SmallIcon = props => {
     return (
         <div
             styleName="small-icon"
+            data-testid="small-icon-component"
             style={{ left: `${(props.timeSpot / props.max) * 100}%` }}
         />
     )

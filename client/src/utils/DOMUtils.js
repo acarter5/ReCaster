@@ -1,13 +1,13 @@
-const offsetLeft = (element) => {
-  let el = element;
-  let x = el.offsetLeft;
+const offsetLeft = element => {
+    let el = element
+    let x = el.offsetLeft
 
-  while (el.offsetParent) {
-    x += el.offsetParent.offsetLeft;
-    el = el.offsetParent;
-  }
+    while (el.offsetParent) {
+        x += el.offsetParent.offsetLeft
+        el = el.offsetParent
+    }
 
-  return x;
-};
+    return x
+}
 
-export default offsetLeft;
+export default offsetLeft

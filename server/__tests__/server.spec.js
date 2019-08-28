@@ -1,11 +1,23 @@
-const request = require('supertest')
-const app = require('../app')
+const startServer = require('../start')
+const axios = require('axios')
 
 describe('Get /', () => {
-    // const response = await request(app).get('/')
-    // expect(response.statusCode).toBe(200)
-    test('it should respond with the app', async () => {
-        const response = await request(app).get('/1')
-        expect(response.statusCode).toBe(200)
+    let server, baseURL, staticRoute, response
+    const episodeId = '1'
+    beforeAll(async () => {
+        server = await startServer({ port: 8798 })
+        baseURL = `http://localhost:${server.address().port}`
+        staticRoute = axios.create({ baseURL })
+        response = await staticRoute.get(episodeId)
+    })
+
+    afterAll(() => server.close())
+    test('it should respond with 200 status code', () => {
+        console.log('env', process.env.NODE_ENV)
+        expect(response.status).toBe(200)
+    })
+
+    test('it should respond with html', () => {
+        expect(response.data).toMatch('<html>')
     })
 })

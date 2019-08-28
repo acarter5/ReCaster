@@ -1,12 +1,21 @@
-const mysql = require('mysql');
+const mysql = require('mysql')
 
-const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'ACisdude5',
-  database: 'recaster',
-});
+const DATABASE = process.env.NODE_ENV === 'test' ? 'recaster_test' : 'recaster'
 
-db.connect();
+const dbPool = mysql.createPool({
+    connectionLimit: 100,
+    host: 'localhost',
+    user: 'root',
+    password: 'ACisdude5',
+    database: DATABASE,
+    multipleStatements: process.env.NODE_ENV === 'test',
+    charset: 'utf8mb4'
+})
 
-module.exports = db;
+const getConnection = cb => {
+    dbPool.getConnection((err, connection) => {
+        cb(err, connection)
+    })
+}
+
+module.exports = getConnection

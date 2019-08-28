@@ -4,7 +4,7 @@ import styles from './shoutOut.css'
 
 const ShoutOut = props => {
     return (
-        <div styleName="shoutOut-container">
+        <div styleName="shoutOut-container" data-testid="shoutout-component">
             <div styleName="img-container">
                 <img src={props.data.img} height="100" width="100" />
             </div>
