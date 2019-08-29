@@ -17,7 +17,7 @@ describe('Get /', () => {
         response = await staticRoute.get(episodeId)
     })
 
-    afterAll(async done => {
+    afterAll(done => {
         dbPool.end(done)
         server.close(done)
     })
