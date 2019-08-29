@@ -1,8 +1,7 @@
 const startServer = require('../../start')
 const axios = require('axios')
 const getData = res => res.data
-const dbutils = require('../../database/config')
-const { createPool } = dbutils
+const { createPool } = require('../../../database/config')
 const initDb = require('../test-utils/initDB')
 
 describe('Get /episodes', () => {
