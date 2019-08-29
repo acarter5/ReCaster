@@ -17,7 +17,7 @@ describe('Get /', () => {
         expect(response.status).toBe(200)
     })
 
-    test.skip('it should respond with html', () => {
+    test('it should respond with html', () => {
         expect(response.data).toMatch('<html>')
     })
 })
