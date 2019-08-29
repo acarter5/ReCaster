@@ -7,7 +7,7 @@ describe('Get /', () => {
     beforeAll(async () => {
         server = await startServer({ port: 8798 })
         baseURL = `http://localhost:${server.address().port}`
-        staticRoute = await axios.create({ baseURL })
+        staticRoute = axios.create({ baseURL })
         response = await staticRoute.get(episodeId)
     })
 
