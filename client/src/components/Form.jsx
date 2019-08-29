@@ -82,7 +82,7 @@ class Form extends React.Component {
                     <div styleName="title-screen">
                         <img
                             styleName="excited-girl"
-                            src="./assets/excited_girl.gif"
+                            src="https://recaster.s3.us-east-2.amazonaws.com/excited_girl.gif"
                         />
                         <h2>
                             Hear something that deserves <br /> a shoutout?
@@ -100,21 +100,21 @@ class Form extends React.Component {
                                         this.handleScrollToElement('wikipedia')
                                     }}
                                 >
-                                    <img src="./assets/wikipedia_icon.png" />
+                                    <img src="https://recaster.s3.us-east-2.amazonaws.com/wikipedia_icon.png" />
                                     Wikipedia Article
                                 </a>
                             </div>
 
                             <div styleName="platform-button-inner-container">
                                 <a href="#">
-                                    <img src="./assets/facebook_icon.png" />
+                                    <img src="https://recaster.s3.us-east-2.amazonaws.com/facebook_icon.png" />
                                     Facebook Post
                                 </a>
                             </div>
 
                             <div styleName="platform-button-inner-container">
                                 <a href="#">
-                                    <img src="./assets/twitter_icon.jpeg" />
+                                    <img src="https://recaster.s3.us-east-2.amazonaws.com/twitter_icon.jpeg" />
                                     Tweet
                                 </a>
                             </div>

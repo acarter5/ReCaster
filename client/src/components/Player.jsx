@@ -78,7 +78,7 @@ class Player extends React.Component {
                     tabIndex="0"
                 >
                     <img
-                        src="assets/shoutout_icon.png"
+                        src="https://recaster.s3.us-east-2.amazonaws.com/shoutout_icon.png"
                         alt="Make a shoutout!"
                         height="30"
                         width="30"
