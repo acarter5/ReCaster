@@ -12,11 +12,13 @@ describe('Get /', () => {
     })
 
     afterAll(() => server.close())
-    test('it should respond with 200 status code', () => {
+    test('it should respond with 200 status code', done => {
         expect(response.status).toBe(200)
+        done()
     })
 
-    test('it should respond with html', () => {
+    test('it should respond with html', done => {
         expect(response.data).toMatch('<html>')
+        done()
     })
 })
