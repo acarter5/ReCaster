@@ -5,7 +5,7 @@ const { createPool } = require('../../../database/config')
 const initDb = require('../../test-utils/initDB')
 
 describe('Get /episodes', () => {
-    let server, baseURL, api
+    let server, baseURL, api, dbPool
     const episodeId = '1'
     beforeAll(async () => {
         dbPool = createPool()
