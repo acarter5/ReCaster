@@ -15,9 +15,9 @@ const initDB = () => {
         'ALTER TABLE episodes CHANGE shoutouts shoutouts TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci'
 
     getConnection(async (err, connection) => {
-        connection.on('error', err => {
+        if (err) {
             throw err
-        })
+        }
         await connection.query(
             `${qs1};${qs2};${qs3};${qs4};${qs5};${qs6};${qs7};${qs8};`,
             (err, results) => {
