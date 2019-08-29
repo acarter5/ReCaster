@@ -26,9 +26,7 @@ jobs:
           command: |
             sudo apt-get update && sudo apt-get install -y mysql-client
             ls
-            # mysql -h 127.0.0.1 -u root --password=circle_test< database/schema-test.sql
-    test:
-      steps:
-        - run:
-            name: run server tests
-            command: npm run test:server
+            # mysql -h 127.0.0.1 -u root -ppassw0rd circle_test recaster_test < database/schema-test.sql
+      - run:
+          name: run server tests
+          command: npm run test:server
