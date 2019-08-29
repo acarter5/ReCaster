@@ -12,12 +12,12 @@ describe('Get /', () => {
     })
 
     afterAll(() => server.close())
-    test('it should respond with 200 status code', () => {
+    test.only('it should respond with 200 status code', () => {
         console.log('env', process.env.NODE_ENV)
         expect(response.status).toBe(200)
     })
 
-    test('it should respond with html', () => {
+    test.skip('it should respond with html', () => {
         expect(response.data).toMatch('<html>')
     })
 })
