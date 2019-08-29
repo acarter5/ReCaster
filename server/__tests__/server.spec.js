@@ -7,13 +7,12 @@ describe('Get /', () => {
     beforeAll(async () => {
         server = await startServer({ port: 8798 })
         baseURL = `http://localhost:${server.address().port}`
-        staticRoute = axios.create({ baseURL })
+        staticRoute = await axios.create({ baseURL })
         response = await staticRoute.get(episodeId)
     })
 
     afterAll(() => server.close())
-    test.only('it should respond with 200 status code', () => {
-        console.log('env', process.env.NODE_ENV)
+    test('it should respond with 200 status code', () => {
         expect(response.status).toBe(200)
     })
 
