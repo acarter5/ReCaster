@@ -1,17 +1,25 @@
 const startServer = require('../../start')
 const axios = require('axios')
 const getData = res => res.data
+const dbutils = require('../../database/config')
+const { createPool } = dbutils
+const initDb = require('../test-utils/initDB')
 
-describe.skip('Get /episodes', () => {
+describe('Get /episodes', () => {
     let server, baseURL, api
     const episodeId = '1'
     beforeAll(async () => {
+        dbPool = createPool()
+        initDb()
         server = await startServer({ port: 8798 })
         baseURL = `http://localhost:${server.address().port}/api`
         api = axios.create({ baseURL })
     })
 
-    afterAll(() => server.close())
+    afterAll(done => {
+        dbPool.end(done)
+        server.close(done)
+    })
 
     test('it should respond with 200 status code', async () => {
         const response = await api.get(`episodes/${episodeId}`)
