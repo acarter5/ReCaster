@@ -2,7 +2,7 @@ const startServer = require('../../start')
 const axios = require('axios')
 const getData = res => res.data
 
-describe('Post /shoutouts', () => {
+describe.skip('Post /shoutouts', () => {
     let server, baseURL, api
     const episodeId = '1'
     beforeAll(async () => {
