@@ -1,3 +1,3 @@
-const initDB = require('./initDB')
+// const initDB = require('./initDB')
 process.env.NODE_ENV = 'test'
-initDB()
+// initDB()
