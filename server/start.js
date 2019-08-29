@@ -1,11 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-const db = require('../database/operations.js')
 const path = require('path')
-const axios = require('axios')
-const utils = require('./ServerUtils.js')
-const getShoutOutIdx = utils.getShoutOutIdx
-const formatText = utils.formatText
 const cors = require('cors')
 const { setupRoutes } = require('./routes')
 
@@ -22,11 +17,11 @@ async function startServer({ port = process.env.SERVER_PORT } = {}) {
 
     setupRoutes(app)
 
+    app.use('/:id', express.static(path.join(__dirname, '/../client/dist')))
+
     // app.get('/:id', (req, res) => {
     //     res.redirect(`http://localhost:${port}`)
     // })
-
-    app.use('/:id', express.static(path.join(__dirname, '/../client/dist')))
 
     return new Promise(resolve => {
         const server = app.listen(port, () => {

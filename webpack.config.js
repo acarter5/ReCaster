@@ -70,8 +70,8 @@ module.exports = {
     },
     output: {
         path: DIST_DIR,
-        filename: '[name].[hash].js',
-        publicPath: '/'
+        filename: '[name].[hash].js'
+        // publicPath: DIST_DIR
     },
     plugins: [
         new MiniCssExtractPlugin({
