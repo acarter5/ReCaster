@@ -9,7 +9,7 @@ const createPool = () => {
         connectionLimit: 100,
         host: 'localhost',
         user: 'root',
-        password: 'circle_test',
+        password: 'ACisdude5',
         database: DATABASE,
         multipleStatements: process.env.NODE_ENV === 'test',
         charset: 'utf8mb4'
