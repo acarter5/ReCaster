@@ -21,7 +21,7 @@ jobs:
       - run:
           name: wait for db
           command: dockerize -wait tcp://localhost:3306 -timeout 1m
-      -run:
+      - run:
           name: Install MySQL CLI; Import dummy data
           command: |
             sudo apt-get install default-mysql-client
