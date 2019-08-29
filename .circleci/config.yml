@@ -1,0 +1,31 @@
+version: 2.1
+  jobs:
+    build: 
+      docker:
+        - image: circleci/node:6.13.1
+        - image: circleci/mysql:5.7.25
+          environment:
+            MYSQL_DATABASE: recaster_test
+            MYSQL_USER: root
+            MYSQL_ROOT_PASSWORD: circle_test
+      steps:
+        - checkout
+        - run:
+          name: install dependencies
+          command: npm install
+        - run:
+          name: install dockerize
+          command: wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && sudo tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+          environment:
+            DOCKERIZE_VERSION: v0.3.0
+        - run:
+          name: wait for db
+          command: dockerize -wait tcp://localhost:3306 -timeout 1m
+        - name: Install MySQL CLI; Import dummy data
+          command: |
+            sudo apt-get install default-mysql-client
+            mysql -h 127.0.0.1 -u rooe -ppassw0rd circle_test < database/schema-test.sql
+        - run:
+          name: run server tests
+          command: npm run test:server
+        
