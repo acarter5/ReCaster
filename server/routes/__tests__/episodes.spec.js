@@ -2,7 +2,7 @@ const startServer = require('../../start')
 const axios = require('axios')
 const getData = res => res.data
 const { createPool } = require('../../../database/config')
-const initDb = require('../test-utils/initDB')
+const initDb = require('../../test-utils/initDB')
 
 describe('Get /episodes', () => {
     let server, baseURL, api
