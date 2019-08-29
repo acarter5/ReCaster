@@ -25,7 +25,7 @@ jobs:
           name: Install MySQL CLI; Import dummy data
           command: |
             sudo apt-get update && sudo apt-get install -y mysql-client
-            mysql -h 127.0.0.1 -u root -password circle_test < database/schema-test.sql
+            mysql -h 127.0.0.1 -u root -password circle_test recaster_test < database/schema-test.sql
       - run:
           name: run server tests
           command: npm run test:server
