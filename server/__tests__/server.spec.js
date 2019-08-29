@@ -1,5 +1,7 @@
 const startServer = require('../start')
 const axios = require('axios')
+const dbutils = require('../../database/config')
+const { dbPool } = dbutils
 
 describe('Get /', () => {
     let server, baseURL, staticRoute, response
@@ -11,14 +13,15 @@ describe('Get /', () => {
         response = await staticRoute.get(episodeId)
     })
 
-    afterAll(() => server.close())
-    test('it should respond with 200 status code', done => {
+    afterAll(done => {
+        server.close(done)
+        dbPool.end(done)
+    })
+    test('it should respond with 200 status code', () => {
         expect(response.status).toBe(200)
-        done()
     })
 
-    test('it should respond with html', done => {
+    test('it should respond with html', () => {
         expect(response.data).toMatch('<html>')
-        done()
     })
 })

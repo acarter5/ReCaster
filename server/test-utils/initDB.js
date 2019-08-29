@@ -1,4 +1,5 @@
-const getConnection = require('../../database/config')
+const dbutils = require('../../database/config')
+const { getConnection } = dbutils
 
 const initDB = () => {
     const qs1 = `DROP DATABASE IF EXISTS recaster_test`
