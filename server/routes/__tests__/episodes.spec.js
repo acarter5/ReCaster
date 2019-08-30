@@ -27,7 +27,6 @@ describe('Get /episodes', () => {
 
     test('it should respond with correct data', async () => {
         const dataArr = await api.get(`episodes/${episodeId}`).then(getData)
-        console.log('dataArr', dataArr)
         const data = dataArr.pop()
 
         expect(data).toEqual({
