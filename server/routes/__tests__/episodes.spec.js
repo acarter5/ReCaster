@@ -21,12 +21,12 @@ describe('Get /episodes', () => {
         server.close(done)
     })
 
-    test.only('it should respond with 200 status code', async () => {
+    test('it should respond with 200 status code', async () => {
         const response = await api.get(`episodes/${episodeId}`)
         expect(response.status).toBe(200)
     })
 
-    test.skip('it should respond with correct data', async () => {
+    test('it should respond with correct data', async () => {
         const dataArr = await api.get(`episodes/${episodeId}`).then(getData)
         const data = dataArr.pop()
 

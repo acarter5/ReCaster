@@ -3,13 +3,11 @@ const { getConnection } = require('./config.js')
 const episodeById = (episode_id, whenData) => {
     const qs = `SELECT * FROM episodes WHERE id = ${episode_id}`
     getConnection((err, connection) => {
-        if (connection) {
-            connection.on('error', err => {
-                whenData(err, null)
-            })
-            connection.query(qs, whenData)
-            connection.release()
-        }
+        connection.on('error', err => {
+            whenData(err, null)
+        })
+        connection.query(qs, whenData)
+        connection.release()
     })
 }
 
