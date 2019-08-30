@@ -4,7 +4,7 @@ const getData = res => res.data
 const { createPool } = require('../../../database/config')
 const initDb = require('../../test-utils/initDB')
 
-describe('Post /shoutouts', () => {
+describe.skip('Post /shoutouts', () => {
     let server, baseURL, api, dbPool
     const episodeId = '1'
     beforeAll(async () => {

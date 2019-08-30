@@ -17,6 +17,7 @@ const initDB = () => {
     getConnection(async (err, connection) => {
         if (err) {
             throw err
+            return
         }
         await connection.query(
             `${qs1};${qs2};${qs3};${qs4};${qs5};${qs6};${qs7};${qs8};`,

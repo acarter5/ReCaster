@@ -3,9 +3,6 @@ const { getConnection } = require('./config.js')
 const episodeById = (episode_id, whenData) => {
     const qs = `SELECT * FROM episodes WHERE id = ${episode_id}`
     getConnection((err, connection) => {
-        if (err) {
-            console.log(err)
-        }
         if (connection) {
             connection.on('error', err => {
                 whenData(err, null)
