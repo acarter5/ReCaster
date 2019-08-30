@@ -7,7 +7,7 @@ jobs:
         environment:
           MYSQL_DATABASE: recaster_test
           MYSQL_USER: root
-          MYSQL_ROOT_PASSWORD: $DB_PSWD
+          MYSQL_ROOT_PASSWORD: $(eval echo ${DB_PSWD})
     steps:
       - checkout
       - run:
