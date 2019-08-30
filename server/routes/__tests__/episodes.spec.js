@@ -35,7 +35,7 @@ describe('Get /episodes', () => {
             series_id: 1,
             shoutouts: '[]',
             src:
-                'https://play.podtrac.com/npr-510313/ondemand.npr.org/anon.npr-podcasts/podcast/npr/hibt/2018/02/20180223_hibt_wikipedia-c2d9f4e7-ccd9-40d0-b07f-e6e4a87e1657.mp3?orgId=1&d=2628&p=510313&story=588068536&t=podcast&e=588068536&siteplayer=true23.4.1',
+                'https://recaster.s3.us-east-2.amazonaws.com/how-i-built-this.mp3',
             title: 'Wikipedia'
         })
 
