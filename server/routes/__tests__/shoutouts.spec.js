@@ -1,17 +1,25 @@
 const startServer = require('../../start')
 const axios = require('axios')
 const getData = res => res.data
+const { createPool } = require('../../../database/config')
+const initDb = require('../../test-utils/initDB')
 
-describe.skip('Post /shoutouts', () => {
-    let server, baseURL, api
+describe('Post /shoutouts', () => {
+    let server, baseURL, api, dbPool
     const episodeId = '1'
     beforeAll(async () => {
+        dbPool = createPool()
+        initDb()
+
         server = await startServer({ port: 8798 })
         baseURL = `http://localhost:${server.address().port}/api`
         api = axios.create({ baseURL })
     })
 
-    afterAll(() => server.close())
+    afterAll(done => {
+        dbPool.end(done)
+        server.close(done)
+    })
 
     describe('/wikipedia', () => {
         let response

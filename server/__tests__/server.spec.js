@@ -1,10 +1,9 @@
 const startServer = require('../start')
 const axios = require('axios')
-const dbutils = require('../../database/config')
-const { createPool } = dbutils
+const { createPool } = require('../../database/config')
 const initDb = require('../test-utils/initDB')
 
-describe.skip('Get /', () => {
+describe('Get /', () => {
     let server, baseURL, staticRoute, response, dbPool
     const episodeId = '1'
     beforeAll(async () => {
