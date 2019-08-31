@@ -9,16 +9,21 @@ describe('Get /episodes', () => {
     let server, baseURL, api, dbPool
     const episodeId = '1'
     beforeAll(async () => {
-        dbPool = createPool()
-        initDb()
+        dbPool = await createPool()
+        await initDb()
+
         server = await startServer({ port: 8798 })
         baseURL = `http://localhost:${server.address().port}/api`
         api = axios.create({ baseURL })
     })
 
-    afterAll(done => {
-        dbPool.end(done)
-        server.close(done)
+    beforeEach(() => {
+        jest.useFakeTimers()
+    })
+
+    afterAll(async () => {
+        await server.close()
+        await dbPool.end()
     })
 
     test('it should respond with 200 status code', async () => {
