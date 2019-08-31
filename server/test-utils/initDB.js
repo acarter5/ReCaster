@@ -1,7 +1,6 @@
-const dbutils = require('../../database/config')
-const { getConnection } = dbutils
+const { getConnection } = require('../../database/config')
 
-const initDB = () => {
+const initDB = async () => {
     const qs1 = `DROP DATABASE IF EXISTS recaster_test`
     const qs2 = 'CREATE DATABASE recaster_test'
     const qs3 = 'USE recaster_test'
@@ -14,22 +13,49 @@ const initDB = () => {
     const qs8 =
         'ALTER TABLE episodes CHANGE shoutouts shoutouts TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci'
 
-    getConnection(async (err, connection) => {
-        if (err) {
-            throw err
-            return
-        }
-        await connection.query(
-            `${qs1};${qs2};${qs3};${qs4};${qs5};${qs6};${qs7};${qs8};`,
-            (err, results) => {
-                if (err) {
-                    throw err
-                }
-            }
-        )
+    const connection = await getConnection()
+    const results = await connection.query(
+        `${qs1};${qs2};${qs3};${qs4};${qs5};${qs6};${qs7};${qs8};`
+    )
 
-        connection.release()
-    })
+    connection.release()
+
+    results
+
+    // const results = await new Promise((resolve, reject) => {
+    //     connection.query(
+    //         `${qs1};${qs2};${qs3};${qs4};${qs5};${qs6};${qs7};${qs8};`,
+    //         (err, results) => {
+    //             if (err) {
+    //                 reject(err)
+    //             }
+    //             resolve(results)
+    //         }
+    //     )
+    // })
+
+    // console.log(results)
+
+    // connection.release()
+
+    // dbPool.getConnection(async (err, connection) => {
+    //     if (err) {
+    //         console.log(err)
+    //     }
+
+    //     console.log(
+    //         'query',
+    //         connection.query(
+    //             `${qs1};${qs2};${qs3};${qs4};${qs5};${qs6};${qs7};${qs8};`,
+    //             (err, results) => {
+    //                 connection.release()
+    //                 if (err) {
+    //                     throw err
+    //                 }
+    //             }
+    //         )
+    //     )
+    // })
 }
 
 module.exports = initDB

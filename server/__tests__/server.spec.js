@@ -7,8 +7,8 @@ describe('Get /', () => {
     let server, baseURL, staticRoute, response, dbPool
     const episodeId = '1'
     beforeAll(async () => {
-        dbPool = createPool()
-        initDb()
+        dbPool = await createPool()
+        await initDb()
 
         server = await startServer({ port: 8798 })
         baseURL = `http://localhost:${server.address().port}`
@@ -16,9 +16,13 @@ describe('Get /', () => {
         response = await staticRoute.get(episodeId)
     })
 
-    afterAll(done => {
-        server.close(done)
-        dbPool.end(done)
+    beforeEach(() => {
+        jest.useFakeTimers()
+    })
+
+    afterAll(async () => {
+        await server.close()
+        await dbPool.end()
     })
 
     test('it should respond with 200 status code', () => {
