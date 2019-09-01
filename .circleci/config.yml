@@ -30,3 +30,6 @@ jobs:
       - run:
           name: run server tests
           command: npm run test:server
+      - run:
+          name: run client tests
+          command: npm run test:client
