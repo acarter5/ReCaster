@@ -59,9 +59,6 @@ jobs:
             echo 'export ECR_REPOSITORY_NAME="recaster"' >> $BASH_ENV
             echo 'export FULL_IMAGE_NAME="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${ECR_REPOSITORY_NAME}:${CIRCLE_SHA1}"' >> $BASH_ENV
       - run:
-          name: log image name
-          command: echo "$FULL_IMAGE_NAME"
-      - run:
           name: Build image
           command: |
             docker build -t $FULL_IMAGE_NAME .
@@ -98,6 +95,9 @@ jobs:
           name: Load image
           command: |
             docker load --input workspace/docker-image/image.tar
+      - run:
+          name: log image name
+          command: echo "$FULL_IMAGE_NAME"
       - run:
           name: Push image
           command: |
