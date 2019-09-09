@@ -5,15 +5,12 @@ const cors = require('cors')
 const { setupRoutes } = require('./routes')
 
 async function startServer({ port = process.env.SERVER_PORT } = {}) {
+    console.log('env', process.env.NODE_ENV)
     port = port || 3000
     const app = express()
     app.use(bodyParser.json())
     app.use(bodyParser.urlencoded({ extended: true }))
-    app.use(
-        cors({
-            origin: 'http://localhost:8080'
-        })
-    )
+    app.use(cors())
 
     setupRoutes(app)
 

@@ -1,0 +1,38 @@
+version: "2"
+
+services:
+  recaster_db:
+    image: cartercadam/recaster_db
+    cpu_shares: 100
+    mem_limit: 262144000
+    container_name: recaster_db
+    ports:
+      - 3306:3306
+
+  recaster_web:
+    image: cartercadam/recaster-web
+    cpu_shares: 100
+    mem_limit: 262144000
+    command: npm run start:prod
+    depends_on:
+      - recaster_db
+    links:
+      - recaster_db
+    restart: on-failure
+    ports:
+      - 3000:3000
+# recaster_db:
+#   image: cartercadam/recaster_db
+#   cpu_shares: 100
+#   mem_limit: 262144000
+#   ports:
+#     - 3306:3306
+# web:
+#   image: cartercadam/recaster-web
+#   cpu_shares: 100
+#   mem_limit: 262144000
+#   links:
+#     - recaster_db
+#   restart: on-failure
+#   ports:
+#     - "3000:3000"

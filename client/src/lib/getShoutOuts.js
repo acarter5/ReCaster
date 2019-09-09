@@ -6,7 +6,7 @@ import source from '../actions/source.js'
 export const getData = function() {
     const id = window.location.pathname.replace(/\//g, '')
 
-    return axios.get(`http://localhost:3000/api/episodes/${id}`).catch(err => {
+    return axios.get(`/api/episodes/${id}`).catch(err => {
         throw err
     })
 }

@@ -1,4 +1,5 @@
 var path = require('path')
+const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const WebpackMd5Hash = require('webpack-md5-hash')
@@ -74,6 +75,12 @@ module.exports = {
         // publicPath: DIST_DIR
     },
     plugins: [
+        new webpack.DefinePlugin({
+            PRODUCTION: JSON.stringify(true),
+            VERSION: JSON.stringify('5fa3b9'),
+            BROWSER_SUPPORTS_HTML5: true,
+            'process.env.NODE_ENV': JSON.stringify('works?')
+        }),
         new MiniCssExtractPlugin({
             filename: 'style.[contenthash].css'
         }),

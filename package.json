@@ -9,8 +9,10 @@
         "test": "jest --watch",
         "test:server": "jest --config ./server/jest.config.js --runInBand",
         "test:client": "jest --config ./client/src/jest.config.js",
-        "start": "nodemon server --harmony-async-await",
-        "build": "webpack --mode development --watch"
+        "start:prod": "NODE_ENV=production nodemon server --harmony-async-await",
+        "start:dev": "NODE_ENV=development nodemon server --harmony-async-await",
+        "build": "webpack --mode=development --watch",
+        "build:prod": "webpack --mode=production"
     },
     "author": "",
     "license": "ISC",

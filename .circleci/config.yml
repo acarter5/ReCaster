@@ -1,6 +1,9 @@
 version: 2.1
+orbs:
+  aws-cli: circleci/aws-cli@0.1.4
+  aws-ecs: circleci/aws-ecs@0.0.10
 jobs:
-  build:
+  test:
     docker:
       - image: circleci/node:8.4
       - image: circleci/mysql:5.7.25
@@ -33,3 +36,77 @@ jobs:
       - run:
           name: run client tests
           command: npm run test:client
+  build:
+    docker:
+      - image: circleci/node:8.4
+      # - image: circleci/mysql:5.7.25
+      #   environment:
+      #     MYSQL_DATABASE: recaster_test
+      #     MYSQL_USER: root
+      #     MYSQL_ROOT_PASSWORD: mysqlpswd
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: install dependencies
+          command: npm install
+      - run:
+          name: Build app
+          command: npm run build:prod
+      - run:
+          name: Setup common environment variables
+          command: |
+            echo 'export ECR_REPOSITORY_NAME="recaster"' >> $BASH_ENV
+            echo 'export FULL_IMAGE_NAME="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${ECR_REPOSITORY_NAME}:${CIRCLE_SHA1}"' >> $BASH_ENV
+      - run:
+          name: Build image
+          command: |
+            docker build -t $FULL_IMAGE_NAME .
+      - run:
+          name: Test image
+          command: |
+            docker run -d -p 8080:3000 --name built-image $FULL_IMAGE_NAME
+            sleep 10
+            docker run --network container:built-image appropriate/curl --retry 10 --retry-connrefused http://localhost:8080/1 | grep "<html>"
+      - run:
+          name: Save image to an archive
+          command: |
+            mkdir docker-image
+            docker save -o docker-image/image.tar $FULL_IMAGE_NAME
+      - persist_to_workspace:
+          root: .
+          paths:
+            - docker-image
+  deploy:
+    docker:
+      - image: circleci/node:8.4
+    environment:
+      AWS_DEFAULT_OUTPUT: json
+    steps:
+      - checkout
+      - setup_remote_docker
+      - attach_workspace:
+          at: workspace
+      - aws-cli/install
+      - aws-cli/configure:
+          aws-access-key-id: "$AWS_ACCESS_KEY_ID"
+          aws-region: "$AWS_DEFAULT_REGION"
+      - run:
+          name: Load image
+          command: |
+            docker load --input workspace/docker-image/image.tar
+      - run:
+          name: Push image
+          command: |
+            eval $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
+            docker push $FULL_IMAGE_NAME
+workflows:
+  test-build-deploy:
+    jobs:
+      - test
+      - build:
+          requires:
+            - test
+      - deploy:
+          requires:
+            - build

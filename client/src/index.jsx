@@ -9,7 +9,7 @@ ReactDOM.render(
     <Provider store={store}>
         <MainContainer />
     </Provider>,
-    document.getElementById('main'),
+    document.getElementById('main')
 )
 
 ReactDOM.render(<Nav />, document.getElementById('nav'))
