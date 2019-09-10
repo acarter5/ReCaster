@@ -19,6 +19,7 @@ class Main extends React.Component {
     render() {
         return (
             <div styleName="main-container" data-testid="main-component">
+                this works?
                 <div styleName="flipper-container">
                     <ReactCardFlip
                         isFlipped={this.props.isFlipped}
