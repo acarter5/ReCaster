@@ -104,7 +104,7 @@ jobs:
           cluster-name: "recaster"
           container-image-name-updates: "container=recaster_web,image-and-tag=${FULL_IMAGE_NAME}"
           container-env-var-updates: 'container=recaster_web,name=VERSION_INFO,value=${CIRCLE_SHA1}_${CIRCLE_BUILD_NUM},container=recaster_web,name=BUILD_DATE,value="$(date)"'
-          # verify-revision-is-deployed: true
+          verify-revision-is-deployed: true
 workflows:
   test-build-deploy:
     jobs:
