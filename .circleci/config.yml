@@ -39,11 +39,6 @@ jobs:
   build:
     docker:
       - image: circleci/node:8.4
-      # - image: circleci/mysql:5.7.25
-      #   environment:
-      #     MYSQL_DATABASE: recaster_test
-      #     MYSQL_USER: root
-      #     MYSQL_ROOT_PASSWORD: mysqlpswd
     steps:
       - checkout
       - setup_remote_docker
@@ -62,12 +57,12 @@ jobs:
           name: Build image
           command: |
             docker build -t $FULL_IMAGE_NAME .
-      # - run:
-      #     name: Test image
-      #     command: |
-      #       docker run -d -p 8080:3000 --name built-image $FULL_IMAGE_NAME
-      #       sleep 10
-      #       docker run --network container:built-image appropriate/curl --retry 10 --retry-connrefused http://localhost:8080/1 | grep "<html>"
+      - run:
+          name: Test image
+          command: |
+            docker run -d -p 3000:3000 --name built-image $FULL_IMAGE_NAME
+            sleep 10
+            docker run --network container:built-image appropriate/curl --retry 10 --retry-connrefused http://localhost:3000/1 | grep "html"
       - run:
           name: Save image to an archive
           command: |
