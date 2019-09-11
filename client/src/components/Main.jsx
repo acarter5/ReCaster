@@ -20,7 +20,7 @@ class Main extends React.Component {
         return (
             <div styleName="main-container" data-testid="main-component">
                 <div>
-                    <p>does this work still?</p>
+                    <p>does this work 2?</p>
                 </div>
                 <div styleName="flipper-container">
                     <ReactCardFlip
